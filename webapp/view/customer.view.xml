@@ -1,0 +1,32 @@
+<mvc:View controllerName="customer.controller.customer"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    <Page title="Order_Details ( {/Order_Details/$count} )">
+    <subHeader>
+    <Toolbar >
+				<SearchField width="20%"  liveChange=".onSearch" showRefreshButton="true" />
+                <ToolbarSpacer ></ToolbarSpacer>
+                <Button icon="sap-icon://filter"></Button>
+                <Button icon="sap-icon://group-2"></Button>
+			</Toolbar>
+        
+    </subHeader>
+      <List id="Order_DetailsList" items="{/Order_Details}" >
+     <CustomListItem>
+     <HBox class="sapUiSmallMargin" justifyContent="SpaceBetween">
+     <VBox >
+     <Title text="OrderID:{OrderID}"></Title>
+     <Label text="Quantity:{Quantity}"></Label>
+     <Label text="ProductID:{ProductID}"></Label>
+     </VBox>
+     
+     <VBox >
+     <Title text="UnitPrice:{UnitPrice}"></Title>
+     <Label text="Discount:{Discount}" ></Label>
+     </VBox>
+     </HBox>
+      </CustomListItem>
+
+      </List>
+    </Page>
+</mvc:View>
