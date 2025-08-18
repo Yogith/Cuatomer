@@ -1,32 +1,34 @@
 <mvc:View controllerName="customer.controller.customer"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m">
-    <Page title="Order_Details ( {/Order_Details/$count} )">
+    <Page title="Orders">
     <subHeader>
     <Toolbar >
 				<SearchField width="20%"  liveChange=".onSearch" showRefreshButton="true" />
                 <ToolbarSpacer ></ToolbarSpacer>
-                <Button icon="sap-icon://filter"></Button>
-                <Button icon="sap-icon://group-2"></Button>
+                <Button  press=".onOpenDialog" icon="sap-icon://filter"></Button>
+                <Button press=".onOpenDialog" icon="sap-icon://group-2"></Button>
 			</Toolbar>
         
     </subHeader>
-      <List id="Order_DetailsList" items="{/Order_Details}" >
+      <List id="Order" items="{/Orders}" >
      <CustomListItem>
      <HBox class="sapUiSmallMargin" justifyContent="SpaceBetween">
      <VBox >
-     <Title text="OrderID:{OrderID}"></Title>
-     <Label text="Quantity:{Quantity}"></Label>
-     <Label text="ProductID:{ProductID}"></Label>
+     <Title text="ShipName:{ShipName}"></Title>
+     <Text text="ShipCity:{ShipCity}"></Text>
+     <Text text="ShipCountry:{ShipCountry}"></Text>
      </VBox>
      
      <VBox >
-     <Title text="UnitPrice:{UnitPrice}"></Title>
-     <Label text="Discount:{Discount}" ></Label>
+     <Title text="ShippedDate:{path:'ShippedDate', formatter:'.formatDate'}"></Title>
+     <Text text="OrderDate:{path:'OrderDate', formatter:'.formatDate' }" ></Text>
+     <!-- <Text text="RequiredDate:{path:'RequiredDate', formatter:'.formatDate' }" ></Text> -->
+    <ObjectStatus id="shippingstatus" text="{parts:[{path:'RequiredDate'},{path:'ShippedDate'}], formatter:'.progress'}" ></ObjectStatus>
+    <!-- state="{parts:[{path:'RequiredDate'},{path:'ShippedDate'}], formatter:'.progresstate'}" -->
      </VBox>
      </HBox>
       </CustomListItem>
-
       </List>
     </Page>
 </mvc:View>

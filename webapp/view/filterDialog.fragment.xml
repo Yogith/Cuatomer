@@ -1,0 +1,18 @@
+<core:FragmentDefinition
+   xmlns="sap.m"
+   xmlns:core="sap.ui.core">
+   <Dialog
+      id="helloDialog"
+      title="View Settings ">
+      <content>
+      <List headerText="Filter by">
+
+      </List></content>
+      <footer>
+      <Toolbar >
+      <Button text="OK" type="Emphasized" press=".onCloseDialog"> </Button>
+      <Button text="Cancel" press=".onCloseDialog"></Button>
+      </Toolbar>
+      </footer>
+      </Dialog>
+</core:FragmentDefinition>
