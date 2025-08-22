@@ -28,6 +28,12 @@
     }
   },
   "sap.ui": {
+    "rootView": {
+      "viewName": "customer.controller.App",
+      "type": "XML",
+      "async": true,
+      "id": "fcl"
+    },
     "technology": "UI5",
     "icons": {
       "icon": "",
@@ -49,6 +55,7 @@
       "minUI5Version": "1.138.1",
       "libs": {
         "sap.m": {},
+        				"sap.f": {},
         "sap.ui.core": {}
       }
     },
@@ -65,6 +72,11 @@
       },
       "": {
         "dataSource": "mainService",
+        "preload": true,
+        "settings": {}
+      },
+      "headermodel": {
+        "type": "sap.ui.model.json.JSONModel",
         "preload": true,
         "settings": {}
       }
@@ -95,12 +107,23 @@
           "target": [
             "Targetcustomer"
           ]
+        },
+        {
+          "name": "orderdetails",
+          "pattern": "orderdetails",
+          "target": [
+            "Targetorderdetails"
+          ]
         }
       ],
       "targets": {
         "Targetcustomer": {
           "id": "customer",
           "name": "customer"
+        },
+        "Targetorderdetails": {
+          "id": "Orderdetails",
+          "name": "Orderdetails"
         }
       }
     },

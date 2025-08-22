@@ -1,1 +1,5 @@
-/* Enter your custom styles here */
+.resetBtnActive {
+    border: 2px solid #007aff !important;
+    font-weight: bold !important;
+    border-radius: 6px !important;
+}

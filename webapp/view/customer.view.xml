@@ -1,7 +1,8 @@
 <mvc:View controllerName="customer.controller.customer"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m">
-    <Page title="Orders">
+    <Page id="orderPage"
+    title="Orders" >
     <subHeader>
     <Toolbar >
 				<SearchField width="20%"  liveChange=".onSearch" showRefreshButton="true" />
@@ -11,21 +12,20 @@
 			</Toolbar>
         
     </subHeader>
-      <List id="Order" items="{/Orders}" >
-     <CustomListItem>
+      <List id="Order" items="{/Orders}" updateFinished=".onUpdateFinished">
+     <CustomListItem type="Navigation" press=".onItemPress">
      <HBox class="sapUiSmallMargin" justifyContent="SpaceBetween">
      <VBox >
-     <Title text="ShipName:{ShipName}"></Title>
-     <Text text="ShipCity:{ShipCity}"></Text>
-     <Text text="ShipCountry:{ShipCountry}"></Text>
+     <Title text="Orderid:{OrderID}"></Title>
+     <Text text="{ShipCity}"></Text>
+     <Text text="{ShipCountry}"></Text>
+     <Text text="ShippedDate:{path:'ShippedDate', formatter:'.formatDate'}"></Text>
      </VBox>
      
      <VBox >
-     <Title text="ShippedDate:{path:'ShippedDate', formatter:'.formatDate'}"></Title>
      <Text text="OrderDate:{path:'OrderDate', formatter:'.formatDate' }" ></Text>
-     <!-- <Text text="RequiredDate:{path:'RequiredDate', formatter:'.formatDate' }" ></Text> -->
-    <ObjectStatus id="shippingstatus" text="{parts:[{path:'RequiredDate'},{path:'ShippedDate'}], formatter:'.progress'}" ></ObjectStatus>
-    <!-- state="{parts:[{path:'RequiredDate'},{path:'ShippedDate'}], formatter:'.progresstate'}" -->
+     <Text text="RequiredDate:{path:'RequiredDate', formatter:'.formatDate' }" ></Text>
+    <ObjectStatus id="shippingstatus"  text="{parts:[{path:'RequiredDate'},{path:'ShippedDate'}], formatter:'.progress'}" state="{parts:[{path:'RequiredDate'},{path:'ShippedDate'}], formatter:'.progresstate'}" ></ObjectStatus>
      </VBox>
      </HBox>
       </CustomListItem>
