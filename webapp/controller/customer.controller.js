@@ -2,15 +2,15 @@ sap.ui.define([
     "sap/ui/core/mvc/Controller",
     "sap/ui/model/Filter",
     "sap/ui/model/FilterOperator",
-    "sap/ui/model/Sorter"
-], (Controller, Filter, FilterOperator, Sorter) => {
+    "sap/ui/model/Sorter",
+    "sap/f/library"
+], (Controller, Filter, FilterOperator, Sorter, fioriLibrary) => {
     "use strict";
 
     return Controller.extend("customer.controller.customer", {
         onInit() { },
 
         formatDate(value) {
-            debugger
             if (!value) return "";
             const date = new Date(value);
             return date.toLocaleDateString("en-GB"); // dd/mm/yyyy
@@ -180,7 +180,8 @@ sap.ui.define([
                 },
                 error: function (oError) {
                     console.error("Error:", oError);
-                }
+                }   
+
             });
 
             // oModel.read(sPath, {
@@ -191,15 +192,18 @@ sap.ui.define([
             //         console.error("Error fetching Products", oError);
             //     }
             // })
-            oModel.read(sCustomer, {
-                success: function (oData) {
-                    console.log("Customer_Details:", oData.results);
-                },
-                error: function (oError) {
-                    console.error("Error fetching Products", oError);
-                }
-            })
+            // oModel.read(sCustomer, {
+            //     success: function (oData) {
+            //         console.log("Customer_Details:", oData);
+            //     },
+            //     error: function (oError) {
+            //         console.error("Error fetching Products", oError);
+            //     }
+            // })
             this.getOwnerComponent().getRouter().navTo("orderdetails")
+            console.log(that.getOwnerComponent().getModel("headermodel"))
+            //  var oFCL=this.getView().getParent().getParent();
+            //         oFCL.setLayout(fioriLibrary.LayoutType.TwoColumnsMidExpanded); 
 
         }
         // formatTotal:function(Unitprice,Quantity){

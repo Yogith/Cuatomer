@@ -17,14 +17,14 @@
             <m:Button press=".onExitPress" icon="sap-icon://decline" ></m:Button>
             
             <!-- Email button aligned correctly -->
-            <m:Button press=".onOpenDialog" icon="sap-icon://email"></m:Button>
+            <m:Button press=".onOpenDialog" icon="sap-icon://email" ></m:Button>
         </actions>
     </ObjectPageDynamicHeaderTitle>
 </headerTitle>
 
     <headerContent>
     <m:HBox >
-    <m:VBox > <m:Label text="Name: {headermodel>/Customer/ContactName}"></m:Label>
+    <m:VBox > <m:Label text="Name: {headermodel>/Customer/ContactName}" > </m:Label>
     <m:Label text="Ordered : {
       path: 'headermodel>/OrderDate',
       type: 'sap.ui.model.type.Date',
@@ -65,7 +65,7 @@
                                     
                                 
         <m:IconTabFilter icon="sap-icon://employee" key="Processor">
-        <m:content>
+        <m:content >
                                     <m:VBox class="sapUiSmallMargin">
                                         <m:ObjectHeader title="Processor Details"/>
                                         <m:Text text="Employee ID : {headermodel>/EmployeeID}"/>
@@ -93,7 +93,7 @@
                     <!-- Table Columns -->
                     <m:columns>
                         <m:Column>
-                            <m:Text text="Product "/>
+                            <m:Text  text="Product "/>
                         </m:Column>
                         <m:Column hAlign="End">
                             <m:Text text="Unit Price"/>
