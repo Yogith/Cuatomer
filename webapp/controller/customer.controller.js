@@ -184,37 +184,11 @@ sap.ui.define([
 
             });
 
-            // oModel.read(sPath, {
-            //     success: function (oData) {
-            //         console.log("Order_Details:", oData.results);
-            //     },
-            //     error: function (oError) {
-            //         console.error("Error fetching Products", oError);
-            //     }
-            // })
-            // oModel.read(sCustomer, {
-            //     success: function (oData) {
-            //         console.log("Customer_Details:", oData);
-            //     },
-            //     error: function (oError) {
-            //         console.error("Error fetching Products", oError);
-            //     }
-            // })
             this.getOwnerComponent().getRouter().navTo("orderdetails")
             console.log(that.getOwnerComponent().getModel("headermodel"))
 
             var oFCL=this.oView.getParent().getParent();
             oFCL.setLayout(fioriLibrary.LayoutType.TwoColumnsMidExpanded);
         }
-        // formatTotal:function(Unitprice,Quantity){
-        //     if(!Unitprice||!Quantity){
-        //         return "0.00";
-        //     }else{
-        //         return Unitprice*Quantity
-
-        //     }
-
-        // }
-
     });
 });
