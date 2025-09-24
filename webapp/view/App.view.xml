@@ -2,15 +2,16 @@
     displayBlock="true"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns:m="sap.m"
-    xmlns="sap.f">
+    xmlns="sap.f"
+     height="100%">
     <m:App id="app">
-    <!-- <FlexibleColumnLayout id="flexibleColumnLayout" backgroundDesign="Solid">
+    <FlexibleColumnLayout >
     <beginColumnPages>
-    <mvc:XMLView id="beingview" viewName="customer.view.customer"/>
+    <mvc:XMLView id="beginView" viewName="customer.view.customer"></mvc:XMLView>
     </beginColumnPages>
     <midColumnPages>
-    <mvc:XMLView id="midview" viewName="customer.view.Orderdetails"></mvc:XMLView>
+    <mvc:XMLView id="detailView" viewName="customer.view.Orderdetails"></mvc:XMLView>
     </midColumnPages>
-    </FlexibleColumnLayout> -->
+    </FlexibleColumnLayout>
     </m:App>
 </mvc:View>

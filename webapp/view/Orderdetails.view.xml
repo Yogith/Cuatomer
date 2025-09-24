@@ -16,8 +16,7 @@
             <!-- Close button -->
             <m:Button press=".onExitPress" icon="sap-icon://decline" ></m:Button>
             
-            <!-- Email button aligned correctly -->
-            <m:Button press=".onOpenDialog" icon="sap-icon://email" ></m:Button>
+            
         </actions>
     </ObjectPageDynamicHeaderTitle>
 </headerTitle>

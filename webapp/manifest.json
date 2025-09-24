@@ -28,7 +28,6 @@
     }
   },
   "sap.ui": {
-    
     "technology": "UI5",
     "icons": {
       "icon": "",
@@ -65,13 +64,13 @@
           "bundleName": "customer.i18n.i18n"
         }
       },
-      "": {
-        "dataSource": "mainService",
+      "headermodel": {
+        "type": "sap.ui.model.json.JSONModel",
         "preload": true,
         "settings": {}
       },
-      "headermodel": {
-        "type": "sap.ui.model.json.JSONModel",
+      "": {
+        "dataSource": "mainService",
         "preload": true,
         "settings": {}
       }
@@ -114,11 +113,13 @@
       "targets": {
         "Targetcustomer": {
           "id": "customer",
-          "name": "customer"
+          "name": "customer",
+          "controlAggregation": "beginColumnPages"
         },
         "Targetorderdetails": {
           "id": "Orderdetails",
-          "name": "Orderdetails"
+          "name": "Orderdetails",
+          "controlAggregation": "midColumnPages"
         }
       }
     },
@@ -126,7 +127,7 @@
       "viewName": "customer.view.App",
       "type": "XML",
       "id": "App",
-      "async": true
+      "async": false
     }
   },
   "sap.cloud": {

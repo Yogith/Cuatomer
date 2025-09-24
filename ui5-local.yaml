@@ -36,7 +36,7 @@ server:
         backend:
           - url: https://services.odata.org/
             authenticationType: NoAuthentication
-            destination: northwind
+            destination: Northwind
             path: /v2
     - name: sap-fe-mockserver
       beforeMiddleware: csp

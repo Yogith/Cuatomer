@@ -4,7 +4,7 @@ sap.ui.define([
     "sap/ui/model/FilterOperator",
     "sap/ui/model/Sorter",
     "sap/f/library"
-], (Controller, Filter, FilterOperator, Sorter, fioriLibrary) => {
+], (Controller, Filter, FilterOperator, Sorter,fioriLibrary ) => {
     "use strict";
 
     return Controller.extend("customer.controller.customer", {
@@ -202,9 +202,9 @@ sap.ui.define([
             // })
             this.getOwnerComponent().getRouter().navTo("orderdetails")
             console.log(that.getOwnerComponent().getModel("headermodel"))
-            //  var oFCL=this.getView().getParent().getParent();
-            //         oFCL.setLayout(fioriLibrary.LayoutType.TwoColumnsMidExpanded); 
 
+            var oFCL=this.oView.getParent().getParent();
+            oFCL.setLayout(fioriLibrary.LayoutType.TwoColumnsMidExpanded);
         }
         // formatTotal:function(Unitprice,Quantity){
         //     if(!Unitprice||!Quantity){

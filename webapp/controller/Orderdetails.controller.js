@@ -1,12 +1,19 @@
 sap.ui.define([
-  "sap/ui/core/mvc/Controller"
-], (BaseController) => {
+  "sap/ui/core/mvc/Controller",
+  "sap/f/library"
+], (BaseController, fioriLibrary) => {
   "use strict";
 
   return BaseController.extend("customer.controller.Orderdetails", {
-    onInit() {
-       this.getOrderTotal()
-    }, formatTotal: function (Unitprice, Quantity) {
+    onInit: function () {
+      let oModel = this.getOwnerComponent().getModel("headermodel");
+      if (oModel) {
+        oModel.attachRequestCompleted(() => {
+          this.getOrderTotal();
+        });
+      }
+    },
+    formatTotal: function (Unitprice, Quantity) {
       if (!Unitprice || !Quantity) {
         return "0.00";
       } else {
@@ -15,18 +22,30 @@ sap.ui.define([
 
     },
     getOrderTotal: function () {
-      
       let total = 0;
-      debugger
-      let oData = this.getOwnerComponent().getModel("headermodel").getData().Order_Details.results
-      oData.forEach(result => {
-        total += (result.UnitPrice * result.Quantity);
-      });
-      this.getOwnerComponent().getModel("headermodel").setProperty("/orderTotal");
+      const oModel = this.getOwnerComponent().getModel("headermodel");
+
+      if (oModel) {
+        const oData = oModel.getData();
+        if (oData?.Order_Details?.results) {
+          oData.Order_Details.results.forEach(result => {
+            total += (result.UnitPrice * result.Quantity);
+          });
+        }
+        oModel.setProperty("/orderTotal", total);
+      }
       return total;
     },
     onExitPress: function () {
       this.getOwnerComponent().getRouter().navTo("Routecustomer")
+      var oFCL = this.oView.getParent().getParent();
+      oFCL.setLayout(fioriLibrary.LayoutType.OneColumnExpanded);
+    },
+    onOpenDialog: function () {
+      var oHCL = this.oView.getParent().getParent();
+      oHCL.setLayout(fioriLibrary.LayoutType.MidColumnFullScreen);
     }
+
+
   });
 });
