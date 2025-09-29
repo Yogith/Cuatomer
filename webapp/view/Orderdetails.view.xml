@@ -6,7 +6,7 @@
     <headerTitle>
     <ObjectPageDynamicHeaderTitle>
         <expandedHeading>
-            <m:Title text="OrderID:{>/OrderID}" wrapping="true"/>
+            <m:Title text="OrderID:{headermodel>/OrderID}" wrapping="true"/>
         </expandedHeading>
 
         <actions>
@@ -22,20 +22,20 @@
 
     <headerContent>
     <m:HBox >
-    <m:VBox > <m:Label text="Name: {>/Customer/ContactName}" > </m:Label>
+    <m:VBox > <m:Label text="Name: {headermodel>/Customer/ContactName}" > </m:Label>
     <m:Label text="Ordered : {
-      path: '>/OrderDate',
+      path: 'headermodel>/OrderDate',
       type: 'sap.ui.model.type.Date',
       formatOptions: { pattern: 'dd.MM.yyyy' }}">
       </m:Label>
     <m:Label text="Shipped : {
-      path: '>/ShippedDate',
+      path: 'headermodel>/ShippedDate',
       type: 'sap.ui.model.type.Date',
       formatOptions: { pattern: 'dd.MM.yyyy' }}" ></m:Label></m:VBox>
     <m:VBox class="sapUiSmallMarginBeginEnd" >
     <m:Label text="Price"></m:Label>
     <m:HBox  >
-    <m:Title text="{path:'>/OrderDate', formatter:'.getOrderTotal'}"></m:Title>
+    <m:Title text="{path:'headermodel>/OrderDate', formatter:'.getOrderTotal'}"></m:Title>
     <m:Label text=" EUR" class="sapUiSmallMarginBeginEnd"></m:Label>
     </m:HBox>
     </m:VBox>
@@ -53,11 +53,11 @@
         <m:items>
         <m:IconTabFilter icon="sap-icon://shipping-status" key="shipping info"  ><m:VBox class="sapUiSmallMargin">
                                         <m:ObjectHeader title="Shipping Address"/>
-                                        <m:Text text=" Name : {>/Shipper/CompanyName}"/>
-                                        <m:Text text="Street: {>/ShipAddress}"/>
-                                        <m:Text text="ZIP Code: {>/ShipPostalCode}"/>
-                                        <m:Text text="City: {>/ShipCity}"/>
-                                        <m:Text text="Country: {>/ShipCountry}"/>
+                                        <m:Text text=" Name : {headermodel>/Shipper/CompanyName}"/>
+                                        <m:Text text="Street: {headermodel>/ShipAddress}"/>
+                                        <m:Text text="ZIP Code: {headermodel>/ShipPostalCode}"/>
+                                        <m:Text text="City: {headermodel>/ShipCity}"/>
+                                        <m:Text text="Country: {headermodel>/ShipCountry}"/>
                                     </m:VBox>
                                     </m:IconTabFilter>
                                     
@@ -66,10 +66,10 @@
         <m:content >
                                     <m:VBox class="sapUiSmallMargin">
                                         <m:ObjectHeader title="Processor Details"/>
-                                        <m:Text text="Employee ID : {>/EmployeeID}"/>
-                                        <m:Text text="CustomerID : {>/CustomerID}"/>
+                                        <m:Text text="Employee ID : {headermodel>/EmployeeID}"/>
+                                        <m:Text text="CustomerID : {headermodel>/CustomerID}"/>
                                         <m:Text text="Email: john.doe@company.com"/>
-                                        <m:Text text="Phone : {>/Employee/HomePhone}"/>
+                                        <m:Text text="Phone : {headermodel>/Employee/HomePhone}"/>
                                     </m:VBox>
                                 </m:content>
         </m:IconTabFilter>
@@ -86,7 +86,7 @@
     <m:Table
                     id="lineItemsTable"
                     inset="false"
-                    items="{>/Order_Details/results}">
+                    items="{headermodel>/Order_Details/results}">
 
                     <!-- Table Columns -->
                     <m:columns>
@@ -111,22 +111,22 @@
                                 <!-- Product (bold + ID below) -->
                                 <m:VBox>
                                     <m:ObjectIdentifier
-                                        title="{>Product/ProductName}"
-                                        text="{>ProductID}"/>
+                                        title="{headermodel>Product/ProductName}"
+                                        text="{headermodel>ProductID}"/>
                                 </m:VBox>
 
                                 <!-- Unit Price -->
                                 <m:ObjectNumber
-                                    number="{>UnitPrice}"
+                                    number="{headermodel>UnitPrice}"
                                     unit="EUR"
                                     emphasized="true"/>
 
                                 <!-- Quantity -->
-                                <m:Text text="{>Quantity}"/>
+                                <m:Text text="{headermodel>Quantity}"/>
 
                                 <!-- Total -->
                                 <m:ObjectNumber
-                                    number="{ parts:[{path:'>UnitPrice'},{path:'>Quantity'}], formatter:'.formatTotal' }"
+                                    number="{ parts:[{path:'headermodel>UnitPrice'},{path:'headermodel>Quantity'}], formatter:'.formatTotal' }"
                                     unit="EUR"
                                     emphasized="true"/>
                             </m:cells>
